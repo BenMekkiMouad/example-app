@@ -14,6 +14,12 @@ class LivreController extends Controller
 
          return view('books', compact('books','categories'));
     }
+
+    public function bookdetails(Request $request){
+
+        $book= Book::find($request->id);
+        return view('bookdetails', compact('book'));
+    }
    
     public function viewByCategory(Request $request){
 
