@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/books', 'LivreController@index')->name('books');
+Route::get('/categories/{id}', 'LivreController@viewByCategory')->name('voirparcategorie');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

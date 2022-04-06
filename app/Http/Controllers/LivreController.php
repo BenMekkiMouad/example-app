@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 class LivreController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $books= Book::inRandomOrder()->take(5)->get();
-        $categories = Category::all();
+         $books= Book::all();
+         $categories = Category::where('is_online',1)->get();
 
-        return view('books')->with(['books'=> $books,'categories'=>$categories,]);
-        //$arr=Array('books'=>$books);
-        // return view('books',$arr);
+         return view('books', compact('books','categories'));
+    }
+   
+    public function viewByCategory(Request $request){
+
+        $books= Book::where('category_id', $request->id)->get();
+       $categories= Category::all();
+         return view('books', compact('books','categories'));
     }
 }
+
