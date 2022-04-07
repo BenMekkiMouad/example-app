@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="biblio-ens-logo.png" style="width:80px;">   
+                        <img src="books.png" style="width:120px;">   
                     </a>
                 </div>
 

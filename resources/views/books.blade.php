@@ -23,24 +23,19 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @forelse($books as $mybook)
-                
-                    <div class="card-group" >
-                        <div class="card text-white bg-warning mb-3" style="width: 3rem;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="{{route('bookdetails', ['id'=>$mybook->id])}}" ><div class="titre"><b>{{ $mybook->titre }}</b></div></a></h5>
-                                <p class="card-text"><a href="{{route('bookdetails', ['id'=>$mybook->id])}}" ><div class="titre"><i>{{ $mybook->auteur }}</i></div></a></p>
-                        
-                            </div>
-                        </div>
+              <div class="card-group">
+                @forelse($books as $mybook)  
+                <div class="card mr-3">
+                    <img class="card-img-top" src="ens.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <a href="{{route('bookdetails', ['id'=>$mybook->id])}}" ><h5 class="card-title">{{ $mybook->titre }}</h5></a>
+                    <a href="{{route('bookdetails', ['id'=>$mybook->id])}}" ><p class="card-text">{{ $mybook->auteur }}</p></a>
                     </div>
-                
+                    
+                </div>
                 @empty
                     <div>No Item Found!</div>
                 @endforelse
-                </div>
-                
      
                <!-- @forelse($books as $mybook)
                 <div class="book">
