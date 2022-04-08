@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-           <img src="biblio-ens-logo.png" style="width:150px;">
+           <img src="books.png" style="width:150px;">
 
         </x-slot>
 

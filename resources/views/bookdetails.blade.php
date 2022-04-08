@@ -4,21 +4,79 @@
             {{ __('details') }}
         </h2>
     </x-slot>
-     
+    <!--BOOK details style -->
+     <style>
+        .card-body{
+            float:right;
+            margin:2rem;
+
+        }
+        .book-information{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 40px;
+            padding: 100px 0 120px;
+
+        }
+        .book-image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #979797;
+            padding: 30px;
+            text-align: center;
+            height: 400px;
+            
+            
+
+            img {
+                
+                opacity: 0;
+                transition: opacity .10s ease-in-out;
+                max-height: 100%;
+            }
+
+            img.active {
+                opacity: 1;
+            }
+        }
+        .card-img-top{
+            
+            width: 100%;
+            height:100%;
+            object-fit:contain;
+        }
+    @media only screen and (max-width: 327px) {
+        .book-information{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            padding: 10px 0 12px;
+
+        }
+
+    }
+
+    </style>
+
+    <!--  BOOK DETAILS -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="card">
-                    <img class="card-img-top" src="ens.jpg" alt="Card image cap">
+                <div class="book-information">
+                    <div class="book-image">
+                        <img class="card-img-top" src="../../good_to_great.jpg" alt="Card image cap">
+                    </div>
                     <div class="card-body">
-                    <a href="#" ><h5 class="card-title">Titre :{{ $book->titre }}</h5></a>
-                    <a href=" #" ><p class="card-text">Auteur : {{ $book->auteur }}</p></a>
-                    <a href=" #" ><p class="card-text">{{ $book->description }}</p></a>
+                        <h1 class="product-section-title"><b>Titre : </b>{{ $book->titre }}</h1></a>
+                        <p class="card-text"><b>Auteur : </b>{{ $book->auteur }}</p></a>
+                        <p class="card-text">{{ $book->description }}</p></a>
                     </div>
                     
                 </div>
             </div>  
         </div>
     </div>
+    
 
 </x-app-layout>
