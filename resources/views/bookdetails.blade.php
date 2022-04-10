@@ -68,9 +68,12 @@
                         <img class="card-img-top" src="../../good_to_great.jpg" alt="Card image cap">
                     </div>
                     <div class="card-body">
-                        <h1 class="product-section-title"><b>Titre : </b>{{ $book->titre }}</h1></a>
+                        <h1 class="product-section-title" ><b>Titre : </b>{{ $book->titre }}</h1></a>
                         <p class="card-text"><b>Auteur : </b>{{ $book->auteur }}</p></a>
-                        <p class="card-text">{{ $book->description }}</p></a>
+                        <p class="card-text" style="color: #9e9a75 ;font-family: 'Quicksand';"><i>{{ $book->description }}</i></p></a>
+                        <br>
+                        <p class="card-text"><span style=" border :2px solid lightgrey ; display:inline;" >Quantité : {{ $book->qt }}</span></p></a>
+
                     </div>
                     
                 </div>
