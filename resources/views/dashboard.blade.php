@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -10,9 +11,12 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <H1>Bibliothèque Numérique ENS Rabat</H1>
             </div>
-            <div>
-                <img src="ens.jpg">
-            </div>
+           
+            
         </div>
     </div>
+
+    
+    
 </x-app-layout>
+ 

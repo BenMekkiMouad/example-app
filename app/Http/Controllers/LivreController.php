@@ -9,7 +9,7 @@ class LivreController extends Controller
 {
     public function index(Request $request)
     {
-         $books= Book::all();
+         $books= Book::paginate(3);
          $categories = Category::where('is_online',1)->get();
 
          return view('books', compact('books','categories'));
@@ -23,7 +23,7 @@ class LivreController extends Controller
    
     public function viewByCategory(Request $request){
 
-        $books= Book::where('category_id', $request->id)->get();
+        $books= Book::where('category_id', $request->id)->paginate(3);
        $categories= Category::all();
          return view('books', compact('books','categories'));
     }
