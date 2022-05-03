@@ -25,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Gate::define('tasks_create', fn(User $user) => $user->role ==1);
     }
 }
