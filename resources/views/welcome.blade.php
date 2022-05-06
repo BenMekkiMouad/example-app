@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link rel="stylesheet" href="me.css" type='text/css' />
+    <link rel="icon" href="books.png">
 
         <title>Biblio</title>
 
@@ -18,12 +19,56 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                background-color: #a4978e;
+            }
+           
+            button {
+                display: inline-block;
+                
+                background-color: #8e9ba4;
+               
+                color: white;
+                
+                font-size: 28px;
+                padding: 20px;
+                width: 15rem;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+                border-radius: 23px;
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.644), 0 6px 20px 0 rgba(0,0,0,0.19);
+                
+            }
+            
+            button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            
+            button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            
+            button:hover span {
+                padding-right: 25px;
+            }
+            
+            button:hover span:after {
+                opacity: 1;
+                right: 0;
             }
         </style>
     </head>
     <na>
         
-    <div class="relative flex items-top justify-center min-h-screen  sm:items-center py-4 sm:pt-0" style="background-color:lightgrey;">
+    <div class="relative flex items-top justify-center min-h-screen  sm:items-center py-4 sm:pt-0" >
             
         
        <div class="relative flex items-top justify-center min-h-screen  sm:items-center py-4 sm:pt-0">
@@ -42,14 +87,15 @@
             @endif
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6" style="background-image: url('pub1b.jpg'); background-size:cover;">
+                        <div class="p-6" style="background-image: url('studio.jpg'); background-position: center;">
                            
 
                             <div class="ml-12" >
                                 <div id="trytr" class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Bienvenue dans votre bibliothèque ENS </br></br>
-                                    <button type="button" class="button" href="login" style=" padding:1rem;"><span><a href="login">Joignez-nous</a></span></button>
-
+                                   <img src="books.png" width=50%>
+                                   <br>
+                                    <div class="bienvenue">Bienvenue dans votre bibliothèque ENS</div>   </br></br>
+                                    <button type="button" class="button" href="register" style=" padding:1rem;"><span><a href="register">Joignez-nous</a></span></button>
                                 </div>
                             </div>
                         </div>
@@ -67,30 +113,9 @@
                             </div>
                         </div>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700" >
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold" ><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
+                        
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
 

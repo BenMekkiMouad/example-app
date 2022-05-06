@@ -28,7 +28,7 @@ class Authenticate extends Middleware
                 return $this->redirectTo;
                 break;
             default:
-                $this->redirectTo = '/login';
+                $this->redirectTo = '/welcome';
                 return $this->redirectTo;
         }
          

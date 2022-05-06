@@ -22,7 +22,10 @@ class Admin
         //admin
         if(Auth::user()->role == 1){
             return $next($request); 
+        }else{
+            abort(403,'Unauthorized Action');
         }
+        /*
         //manager
         if(Auth::user()->role == 2){
             return redirect()->route('manager'); 
@@ -30,6 +33,6 @@ class Admin
         //user
         if(Auth::user()->role == 3){
             return redirect()->route('user'); 
-        }
+        }*/
     }
 }
