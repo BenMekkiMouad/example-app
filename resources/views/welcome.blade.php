@@ -19,7 +19,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background-color: #a4978e;
+                background-color: #edebdf;
             }
            
             button {

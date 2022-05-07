@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LivreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +22,19 @@ Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin'
 Route::get('/manager', 'ManagerController@index')->name('manager')->middleware('manager');
 Route::get('/user', 'UserController@index')->name('user')->middleware('user');
 
-Route::middleware(['auth','admin'])->group(function(){
-  Route::resource('Oeuvre','OeuvreController');
-
-});
-
-
-
-
 Route::get('/books', 'LivreController@index')->name('books');
 
 Route::get('/books/{id}', 'LivreController@bookdetails')->name('bookdetails');
 
 Route::get('/categories/{id}', 'LivreController@viewByCategory')->name('voirparcategorie');
+
+
+
+
+Route::middleware(['auth','admin'])->group(function(){
+  Route::resource('Oeuvre','OeuvreController');
+
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

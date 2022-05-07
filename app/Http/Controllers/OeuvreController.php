@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Oeuvre;
+
+use App\Models\Category;
 use App\Http\Requests\StoreOeuvreRequest;
 use App\Http\Requests\UpdateOeuvreRequest;
 
@@ -46,13 +48,14 @@ class OeuvreController extends Controller
     public function store(StoreOeuvreRequest $request)
     {
         
-  
-         $ouvrage = new Oeuvre;
-
+      
+        $ouvrage = new Oeuvre;
+        
         $ouvrage->titre = $request->input('titre');
         $ouvrage->auteur = $request->input('auteur');
         $ouvrage->annee = $request->input('annee');
         $ouvrage->description = $request->input('description');
+        $ouvrage->category_id = $request->input('category_id');
         $ouvrage->qt = $request->input('qt');
         $ouvrage->save();
         session()->flash('success','Le Livre a été bien enregistré');
@@ -78,9 +81,12 @@ class OeuvreController extends Controller
      * @param  \App\Models\Oeuvre  $oeuvre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oeuvre $oeuvre)
-    {
-        return view ('admin.operations.edit')->with('oeuvre', $oeuvre);
+    public function edit ($id) 
+    { 
+        $ouvrage = Oeuvre::find($id);
+
+        return view('admin.operations.edit',['oeuvre' => $ouvrage]);
+
     }
 
     /**
@@ -92,7 +98,13 @@ class OeuvreController extends Controller
      */
     public function update(UpdateOeuvreRequest $request, Oeuvre $oeuvre)
     {
-        //
+        $oeuvre->titre = $request->input('titre');
+        $oeuvre->auteur = $request->input('auteur');
+        $oeuvre->annee = $request->input('annee');
+        $oeuvre->description = $request->input('description');
+        $oeuvre->qt = $request->input('qt');
+        $oeuvre->save();
+        return redirect('Oeuvre');
     }
 
     /**

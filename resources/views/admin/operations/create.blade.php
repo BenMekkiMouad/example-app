@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +13,7 @@
         
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
+        
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -65,6 +67,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <div class="categorie">
+                                                        <label for="category_id">Categorie</label>
+                                                    
+                                                        <input class="form-control" name="category_id" type="text" placeholder=" category" />            
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" name="qt" type="text" placeholder=" qt" />
                                                         <label for="qt">Qt</label>
@@ -78,7 +87,7 @@
                                         
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="{{ url('Oeuvre') }}">Back</a></div>
+                                        <div class="small"><a href="{{ url('Oeuvre') }}">Retour</a></div>
                                     </div>
                                 </div>
                             </div>

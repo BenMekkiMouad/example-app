@@ -20,17 +20,12 @@ class Manager
         if(!Auth::check()){
             return redirect()->route('login');
         }
-        //admin
-        if(Auth::user()->role == 1){
-            return redirect()->route('admin'); 
-        }
+        
         //manager
         if(Auth::user()->role == 2){
             return $next($request);  
-        }
-        //user
-        if(Auth::user()->role == 3){
-            return redirect()->route('user'); 
+        }else{
+            abort(403,'Unauthorized Action');
         }
     }
 }
