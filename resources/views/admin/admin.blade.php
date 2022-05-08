@@ -83,28 +83,30 @@ Accueil</button></a>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
+      <div class="modal-body" >
+        <form action="{{ route('Oeuvre.update', ['oeuvre' => $record->id]) }}"  method="POST">
+            @csrf
+            @method("PUT")
          <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-floating mb-3 mb-md-0">
                              
                         <label for="titre">Titre</label>
-                        <input class="form-control" name="titre" type="text" placeholder="titre" />
+                        <input class="form-control" value="{{$oeuvre->titre }}" name="titre" type="text" placeholder="titre" />
                    
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
                         <label for="auteur">Auteur</label>
-                        <input class="form-control" name="auteur" type="text" placeholder="auteur" />
+                        <input class="form-control" value="{{$oeuvre->auteur}}" name="auteur" type="text" placeholder="auteur" />
                         
                     </div>
                 </div>
             </div>
             <div class="form-floating mb-3">
                  <label for="annee">Date publication</label>
-                <input class="form-control" name="annee"  type="text" placeholder="date" />
+                <input class="form-control" value="{{$oeuvre->annee}}" name="annee"  type="text" placeholder="date" />
                
             </div>
             <div class="row mb-3">
@@ -114,18 +116,32 @@ Accueil</button></a>
                     <textarea
                         name="description" 
                         class="form-control" 
-                        
+                         value="{{$oeuvre->description}}"
                         placeholder="Enter desc">
-                        
+                       
                         
                     </textarea>                    
                    
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="categorie">
+                        <label for="category_id">Categorie</label>
+                        <select class="form-control" 
+                            id="category_id" 
+                            name="category_id" 
+                            value="">
+                            @foreach($categories as $cat)
+                                <option value="{{$cat->id}}">{{$cat->nom}}</option>
+                            @endforeach 
+                        
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="form-floating mb-3 mb-md-0">
                          <label for="qt">Qt</label>
-                        <input class="form-control" name="qt" type="text" placeholder=" qt" />
+                        <input class="form-control" value="{{$oeuvre->qt}} name="qt" type="text" placeholder=" qt" />
                        
                     </div>
                 </div>

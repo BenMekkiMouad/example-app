@@ -14,6 +14,7 @@ class Oeuvre extends Model
         'auteur',
         'annee',
         'description',
-        'qt'
+        'qt',
+        'category_id'
     ];
 }

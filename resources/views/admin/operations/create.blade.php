@@ -69,8 +69,15 @@
                                                 <div class="col-md-6">
                                                     <div class="categorie">
                                                         <label for="category_id">Categorie</label>
-                                                    
-                                                        <input class="form-control" name="category_id" type="text" placeholder=" category" />            
+                                                        <select class="form-control" 
+                                                            id="category_id" 
+                                                            name="category_id" 
+                                                            value="">
+                                                            @foreach($categories as $cat)
+                                                                <option value="{{$cat->id}}">{{$cat->nom}}</option>
+                                                            @endforeach 
+                                                        
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

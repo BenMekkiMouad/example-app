@@ -36,7 +36,8 @@ class OeuvreController extends Controller
      */
     public function create()
     {
-        return view('admin.operations.create');
+        $categories= Category::all();
+        return view('admin.operations.create',compact('categories'));
     }
 
     /**
@@ -81,11 +82,9 @@ class OeuvreController extends Controller
      * @param  \App\Models\Oeuvre  $oeuvre
      * @return \Illuminate\Http\Response
      */
-    public function edit ($id) 
+    public function edit (Oeuvre $oeuvre) 
     { 
-        $ouvrage = Oeuvre::find($id);
-
-        return view('admin.operations.edit',['oeuvre' => $ouvrage]);
+        return view('admin.operations.edit', ['oeuvre' => $oeuvre]);
 
     }
 
@@ -98,10 +97,12 @@ class OeuvreController extends Controller
      */
     public function update(UpdateOeuvreRequest $request, Oeuvre $oeuvre)
     {
+         $oeuvre = Oeuvre::find($id);
         $oeuvre->titre = $request->input('titre');
         $oeuvre->auteur = $request->input('auteur');
         $oeuvre->annee = $request->input('annee');
         $oeuvre->description = $request->input('description');
+        $oeuvre->category_id = $request->input('category_id');
         $oeuvre->qt = $request->input('qt');
         $oeuvre->save();
         return redirect('Oeuvre');
