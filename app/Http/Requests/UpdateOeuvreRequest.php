@@ -24,7 +24,13 @@ class UpdateOeuvreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        'titre'=>'required',
+        'auteur'=>'required',
+        'annee'=>'required',
+        'description'=>'required',
+        'qt'=>'required',
+        'category_id'=>'required',
+        'image'=>'required',
         ];
     }
 }

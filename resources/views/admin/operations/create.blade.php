@@ -66,6 +66,10 @@
                                                     <label for="description">Description</label>
                                                     </div>
                                                 </div>
+                                                <div class="form group">
+                                                    <label for="photo">Image</label>
+                                                    <input class="form-control" type="file" name="image" >
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="categorie">
                                                         <label for="category_id">Categorie</label>

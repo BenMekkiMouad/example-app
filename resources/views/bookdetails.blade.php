@@ -65,7 +65,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="book-information">
                     <div class="book-image">
-                        <img class="card-img-top" src="../../good_to_great.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset('storage/'.$oeuvre->image) }}" alt="Card image cap">
                     </div>
                     <div class="card-body">
                         <h1 class="product-section-title" ><b>Titre : </b>{{ $oeuvre->titre }}</h1></a>

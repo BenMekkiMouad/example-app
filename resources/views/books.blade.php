@@ -44,7 +44,7 @@
                  @forelse($oeuvre as $ouvrage)
                 
                 <div class="card mr-3" id="gal">
-                    <a href="{{route('bookdetails', ['id'=>$ouvrage->id])}}"><img class="card-img-top" src="good_to_great.jpg" alt="Card image cap"></a>
+                    <a href="{{route('bookdetails', ['id'=>$ouvrage->id])}}"><img class="card-img-top" src="{{ asset('storage/'.$ouvrage->image) }}" alt="Card image cap"></a>
                     <div class="card-body">
                     <a href="{{route('bookdetails', ['id'=>$ouvrage->id])}}"  " ><h5 class="card-title"><b>{{ $ouvrage->titre }}</b></h5></a>
                     <a href="{{route('bookdetails', ['id'=>$ouvrage->id])}}" ><p class="card-text"><i>{{ $ouvrage->auteur }}</i></p></a>

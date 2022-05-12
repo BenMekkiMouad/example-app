@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     { 
         switch(Auth::user()->role){
             case 1:
-            $this->redirectTo = '/admin';
+            $this->redirectTo = '/Oeuvre';
             return $this->redirectTo;
                 break;
             case 2:

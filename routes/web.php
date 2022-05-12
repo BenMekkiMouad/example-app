@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivreController;
+use App\Http\Controllers\OeuvreController;
 
 /*
 |--------------------------------------------------------------------------

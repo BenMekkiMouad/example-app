@@ -14,7 +14,9 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Admin Dashboard</title>
+
+
+    <title>Admin Dashboard</title>
 </head>
 <body>
     
@@ -31,40 +33,52 @@
 <a href="{{ url('/dashboard') }}"><button  class="btn btn-secondary" ><i class="fa fa-home" aria-hidden="true"></i>
 Accueil</button></a>
 <h1>Liste des ouvrages disponibles</h1>
-<a href="{{ url('Oeuvre/create') }}"><button  class="btn btn-primary" >Ajouter Oeuvre</button></a>
+<a href="{{ url('Oeuvre/create') }}"><button  class="btn btn-primary" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter Oeuvre</button></a>
 
 <hr>
 <div class="card-body">
     <div class="table table-responsive">
-        <table class="table-bordred">
+        <table id="datatable" class="table-bordred">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>titre</th>
                     <th>auteur</th>
                     <th>date de publication</th>
+                    <th>description</th>
+                    <th>category</th>
+                    <th>qt</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($oeuvre as $ouvrage)
+                @foreach($oeuvre as $oeuvre)
                 <tr>
-                    <td>{{ $ouvrage->titre }}</td>
-                    <td>{{ $ouvrage->auteur }}</td>
-                    <td>{{ $ouvrage->annee }}</td>
+                    <td>{{ $oeuvre->id }}</td>
+                    <td>{{ $oeuvre->titre }}</td>
+                    <td>{{ $oeuvre->auteur }}</td>
+                    <td>{{ $oeuvre->annee }}</td>
+                    <td>{{ $oeuvre->description }}</td>
+                    <td>{{ $oeuvre->category_id}}</td>
+                    <td>{{ $oeuvre->qt }}</td>
                     <td>
-                        <form action="{{ route('Oeuvre.destroy',$ouvrage) }}" method="POST">
+                        <form action="{{ route('Oeuvre.destroy',$oeuvre) }}" method="POST">
                             @csrf
                             @method("DELETE")
 
-                            <button type="submit"  class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</button>
+                            <button type="submit" onclick="return confirm('voulez-vous vraiment supprimer?')"  class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</button>
+                        <a type="button"  href="{{ route('Oeuvre.edit',$oeuvre)}}"   class="btn btn-warning btn-sm " ><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+
                         </form>
+
                     </td>
                     <td>
                         @if(auth::user()->role==1)
                         
-                        <a type="button"  href="{{ route('Oeuvre.edit', $ouvrage)}}"  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <!--data-toggle="modal" data-target="#exampleModal"-->
                         
                         @endif
                     </td>
+                    
                 </tr>
                 @endforeach
             </tbody>
@@ -73,87 +87,5 @@ Accueil</button></a>
 </div>
 
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
-        <form action="{{ route('Oeuvre.update', ['oeuvre' => $record->id]) }}"  method="POST">
-            @csrf
-            @method("PUT")
-         <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-floating mb-3 mb-md-0">
-                             
-                        <label for="titre">Titre</label>
-                        <input class="form-control" value="{{$oeuvre->titre }}" name="titre" type="text" placeholder="titre" />
-                   
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <label for="auteur">Auteur</label>
-                        <input class="form-control" value="{{$oeuvre->auteur}}" name="auteur" type="text" placeholder="auteur" />
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="form-floating mb-3">
-                 <label for="annee">Date publication</label>
-                <input class="form-control" value="{{$oeuvre->annee}}" name="annee"  type="text" placeholder="date" />
-               
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-floating mb-3 mb-md-0">
-                         <label for="description">Description</label>
-                    <textarea
-                        name="description" 
-                        class="form-control" 
-                         value="{{$oeuvre->description}}"
-                        placeholder="Enter desc">
-                       
-                        
-                    </textarea>                    
-                   
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="categorie">
-                        <label for="category_id">Categorie</label>
-                        <select class="form-control" 
-                            id="category_id" 
-                            name="category_id" 
-                            value="">
-                            @foreach($categories as $cat)
-                                <option value="{{$cat->id}}">{{$cat->nom}}</option>
-                            @endforeach 
-                        
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3 mb-md-0">
-                         <label for="qt">Qt</label>
-                        <input class="form-control" value="{{$oeuvre->qt}} name="qt" type="text" placeholder=" qt" />
-                       
-                    </div>
-                </div>
-            </div>
-          
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Enregistrer</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endif
+

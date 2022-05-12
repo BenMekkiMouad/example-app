@@ -19,6 +19,7 @@ class CreateOeuvresTable extends Migration
             $table->string('auteur');
             $table->integer('annee');
             $table->text('description');
+            $table->string('image');
             $table->integer('qt');
 
             $table->timestamps();

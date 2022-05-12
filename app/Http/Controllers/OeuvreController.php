@@ -48,7 +48,6 @@ class OeuvreController extends Controller
      */
     public function store(StoreOeuvreRequest $request)
     {
-        
       
         $ouvrage = new Oeuvre;
         
@@ -56,13 +55,21 @@ class OeuvreController extends Controller
         $ouvrage->auteur = $request->input('auteur');
         $ouvrage->annee = $request->input('annee');
         $ouvrage->description = $request->input('description');
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extesion= $file->getClientOriginalExtension();
+            $filename = time().'.'.$extesion;
+            $file->move('storage/', $filename);
+            $ouvrage->image = $filename;
+        }
+
         $ouvrage->category_id = $request->input('category_id');
         $ouvrage->qt = $request->input('qt');
         $ouvrage->save();
         session()->flash('success','Le Livre a été bien enregistré');
         return redirect('Oeuvre/create');
         
-
     }
 
     /**
@@ -82,10 +89,12 @@ class OeuvreController extends Controller
      * @param  \App\Models\Oeuvre  $oeuvre
      * @return \Illuminate\Http\Response
      */
-    public function edit (Oeuvre $oeuvre) 
+    public function edit(Oeuvre $Oeuvre) 
     { 
-        return view('admin.operations.edit', ['oeuvre' => $oeuvre]);
-
+        $categories= Category::all();
+      //  return view('admin.operations.edit')->with('oeuvre', $oeuvre); 
+        return view('admin.operations.edit', compact('Oeuvre','categories'));
+      
     }
 
     /**
@@ -95,17 +104,23 @@ class OeuvreController extends Controller
      * @param  \App\Models\Oeuvre  $oeuvre
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOeuvreRequest $request, Oeuvre $oeuvre)
+    public function update(UpdateOeuvreRequest $request, Oeuvre $Oeuvre)
     {
-         $oeuvre = Oeuvre::find($id);
-        $oeuvre->titre = $request->input('titre');
-        $oeuvre->auteur = $request->input('auteur');
-        $oeuvre->annee = $request->input('annee');
-        $oeuvre->description = $request->input('description');
-        $oeuvre->category_id = $request->input('category_id');
-        $oeuvre->qt = $request->input('qt');
-        $oeuvre->save();
-        return redirect('Oeuvre');
+ $Oeuvre->titre = $request->input('titre');
+        $Oeuvre->auteur = $request->input('auteur');
+        $Oeuvre->annee = $request->input('annee');
+        $Oeuvre->description = $request->input('description');
+        if ($request->file('image') != null) {
+           
+           $Oeuvre->image = $request->file('image')->store('image');  
+        }
+
+        $Oeuvre->category_id = $request->input('category_id');
+        $Oeuvre->qt = $request->input('qt');
+        
+      $Oeuvre->save();
+      return redirect('Oeuvre')->with('message','updated');
+        
     }
 
     /**

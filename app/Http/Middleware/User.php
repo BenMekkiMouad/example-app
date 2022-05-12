@@ -22,7 +22,7 @@ class User
         }
         //admin
         if(Auth::user()->role == 1){
-            return redirect()->route('admin'); 
+            return redirect()->route('Oeuvre'); 
         }
         //manager
         if(Auth::user()->role == 2){

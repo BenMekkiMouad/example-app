@@ -15,6 +15,7 @@ class Oeuvre extends Model
         'annee',
         'description',
         'qt',
-        'category_id'
+        'category_id',
+        'image',
     ];
 }
